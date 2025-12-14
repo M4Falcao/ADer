@@ -1,5 +1,6 @@
 import glob
 import importlib
+import os
 
 import torch
 import torch.nn as nn
@@ -83,4 +84,4 @@ def get_model(cfg_model):
 
 files = glob.glob('model/[!_]*.py')
 for file in files:
-	model_lib = importlib.import_module(file.split('.')[0].replace('/', '.'))
+	model_lib = importlib.import_module(file.split('.')[0].replace(os.sep, '.'))

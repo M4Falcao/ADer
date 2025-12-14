@@ -1,13 +1,15 @@
 import torch
 from torch import optim as optim
-from timm.optim.adafactor import Adafactor
-from timm.optim.adahessian import Adahessian
-from timm.optim.adamp import AdamP
-from timm.optim.nadam import Nadam
-from timm.optim.radam import RAdam
-from timm.optim.rmsprop_tf import RMSpropTF
-from timm.optim.sgdp import SGDP
-from timm.optim.lookahead import Lookahead
+# from timm.optim.adafactor import Adafactor
+# from timm.optim.adahessian import Adahessian
+# from timm.optim.adamp import AdamP
+# from torch.optim import Nadam
+# 'nadam': Nadam,
+
+# from timm.optim.radam import RAdam
+# from timm.optim.rmsprop_tf import RMSpropTF
+# from timm.optim.sgdp import SGDP
+# from timm.optim.lookahead import Lookahead
 
 
 def check_keywords_in_name(name, keywords=()):
@@ -60,15 +62,15 @@ def get_optim(optim_kwargs, net, lr, betas=None, filter_bias_and_bn=True):
 		'adamw': optim.AdamW,
 		'adadelta': optim.Adadelta,
 		'rmsprop': optim.RMSprop,
-		'nadam': Nadam,
-		'radam': RAdam,
-		'adamp': AdamP,
-		'sgdp': SGDP,
-		'adafactor': Adafactor,
-		'adahessian': Adahessian,
-		'rmsproptf': RMSpropTF,
+		# 'nadam': Nadam,
+		# 'radam': RAdam,
+		# 'adamp': AdamP,
+		# 'sgdp': SGDP,
+		# 'adafactor': Adafactor,
+		# 'adahessian': Adahessian,
+		# 'rmsproptf': RMSpropTF,
 	}
 	optimizer = optim_terms[optim_name](params, lr=lr, **kwargs)
-	if optim_lookahead:
-		optimizer = Lookahead(optimizer)
+	# if optim_lookahead:
+	# 	optimizer = Lookahead(optimizer)
 	return optimizer

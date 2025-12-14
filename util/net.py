@@ -11,7 +11,11 @@ import torch.backends.cudnn as cudnn
 import torch.distributed as dist
 import math
 import time
-from collections import Iterable
+try:
+    from collections.abc import Iterable
+except ImportError:
+    from collections import Iterable
+
 from timm.utils.agc import adaptive_clip_grad
 from util.util import log_msg
 from fvcore.nn import FlopCountAnalysis, flop_count_table
@@ -55,6 +59,7 @@ def init_training(cfg):
 		torch.distributed.barrier()
 	else:
 		cfg.master = True
+		torch.cuda.set_device(0)
 	# ---------- seed ----------
 	seed = cfg.seed + cfg.local_rank
 	np.random.seed(seed)

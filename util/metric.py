@@ -252,7 +252,7 @@ class Evaluator(object):
         # fs_list = [f.cpu() for f in fs_list]
         bs = ft_list[0].shape[0]
         weights = weights if weights else [1] * len(ft_list)
-        anomaly_map = np.ones([bs] + out_size) if amap_mode == 'mul' else np.zeros([bs] + out_size)
+        anomaly_map = np.ones([bs] + out_size, dtype=np.float32) if amap_mode == 'mul' else np.zeros([bs] + out_size, dtype=np.float32)
         a_map_list = []
         if uni_am:
             size = (ft_list[0].shape[2], ft_list[0].shape[3])

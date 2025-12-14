@@ -55,7 +55,7 @@ class DefaultAD(data.Dataset):
 
 		self.data_all = []
 		name = self.root.split('/')[-1]
-		if name in ['mvtec', 'coco', 'visa', 'medical', 'btad', 'mpdd', 'mad_sim', 'mad_real']:
+		if name in ['mvtec', 'coco', 'visa', 'medical', 'btad', 'mpdd', 'mad_sim', 'mad_real', 'insplad-seg']:
 			meta_info = json.load(open(f'{self.root}/{cfg.data.meta}', 'r'))
 			meta_info = meta_info['train' if self.train else 'test']
 			self.cls_names = cfg.data.cls_names

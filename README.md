@@ -103,6 +103,11 @@ Please refer to [Datasets Description](data/README.md) for preparing visual AD d
   3. `$GPU_NUM` GPUs for training all classes parallelly in `mvtec` dataset:: `python3 runs_single_class.py -d mvtec -c configs/vitad/single_cls/vitad_mvtec_bs16.py -n $GPU_NUM -m 1`
   4. results will be saved in default dir: `runs/vitad/single_cls/vitad_mvtec_bs16`
 
+- **Training on InsPLAD-seg with ViTAD:**
+  ```shell
+  $env:CUDA_VISIBLE_DEVICES='0'; conda run -n ader_vit python run.py -c configs/vitad/vitad_insplad.py -m train
+  ```
+
 
 ### Test
 - Modify `trainer.resume_dir` or `model.kwargs['checkpoint_path']`

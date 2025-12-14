@@ -28,4 +28,11 @@ def main():
 
 
 if __name__ == '__main__':
+	import torch
+	if torch.cuda.is_available():
+		print(f"\n[INFO] CUDA is available. Training will run on: {torch.cuda.get_device_name(0)}")
+		print(f"[INFO] Initial GPU Memory Allocated: {torch.cuda.memory_allocated(0) / 1024**2:.2f} MB")
+		print(f"[INFO] Initial GPU Memory Reserved: {torch.cuda.memory_reserved(0) / 1024**2:.2f} MB\n")
+	else:
+		print("\n[WARNING] CUDA is NOT available. Training will run on CPU!\n")
 	main()

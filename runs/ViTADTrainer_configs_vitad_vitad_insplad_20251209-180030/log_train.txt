@@ -1,0 +1,316 @@
+2025-12-09 18:00:30,402 - ==> Logging on master GPU: 0
+2025-12-09 18:00:30,402 - ==> Running Trainer: ViTADTrainer
+2025-12-09 18:00:30,402 - ==> Using GPU: [0] for Training
+2025-12-09 18:00:30,402 - ==> Building model
+2025-12-09 18:00:30,702 - Loading pretrained weights from Hugging Face hub (timm/vit_small_patch16_224.dino)
+2025-12-09 18:00:31,356 - HTTP Request: HEAD https://huggingface.co/timm/vit_small_patch16_224.dino/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2025-12-09 18:00:31,604 - HTTP Request: GET https://huggingface.co/api/models/timm/vit_small_patch16_224.dino/xet-read-token/10e440b8a34dfd657a90f2fcaa988c6b6a2f0da4 "HTTP/1.1 200 OK"
+2025-12-09 18:00:41,247 - [timm/vit_small_patch16_224.dino] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-12-09 18:00:41,419 - Resized position embedding: (14, 14) to (16, 16).
+2025-12-09 18:00:43,441 - 
+------------------------------------ ViTAD ------------------------------------
+| module                            | #parameters or shape   | #flops       |
+|:----------------------------------|:-----------------------|:-------------|
+| model                             | 38.586M                | 9.668G       |
+|  net_t                            |  21.689M               |  5.544G      |
+|   net_t.cls_token                 |   (1, 1, 384)          |              |
+|   net_t.pos_embed                 |   (1, 257, 384)        |              |
+|   net_t.patch_embed.proj          |   0.295M               |   75.497M    |
+|    net_t.patch_embed.proj.weight  |    (384, 3, 16, 16)    |              |
+|    net_t.patch_embed.proj.bias    |    (384,)              |              |
+|   net_t.blocks                    |   21.294M              |   5.469G     |
+|    net_t.blocks.0                 |    1.774M              |    0.456G    |
+|     net_t.blocks.0.norm1          |     0.768K             |     0.493M   |
+|      net_t.blocks.0.norm1.weight  |      (384,)            |              |
+|      net_t.blocks.0.norm1.bias    |      (384,)            |              |
+|     net_t.blocks.0.attn           |     0.591M             |     0.152G   |
+|      net_t.blocks.0.attn.qkv      |      0.444M            |      0.114G  |
+|      net_t.blocks.0.attn.proj     |      0.148M            |      37.896M |
+|     net_t.blocks.0.norm2          |     0.768K             |     0.493M   |
+|      net_t.blocks.0.norm2.weight  |      (384,)            |              |
+|      net_t.blocks.0.norm2.bias    |      (384,)            |              |
+|     net_t.blocks.0.mlp            |     1.182M             |     0.303G   |
+|      net_t.blocks.0.mlp.fc1       |      0.591M            |      0.152G  |
+|      net_t.blocks.0.mlp.fc2       |      0.59M             |      0.152G  |
+|    net_t.blocks.1                 |    1.774M              |    0.456G    |
+|     net_t.blocks.1.norm1          |     0.768K             |     0.493M   |
+|      net_t.blocks.1.norm1.weight  |      (384,)            |              |
+|      net_t.blocks.1.norm1.bias    |      (384,)            |              |
+|     net_t.blocks.1.attn           |     0.591M             |     0.152G   |
+|      net_t.blocks.1.attn.qkv      |      0.444M            |      0.114G  |
+|      net_t.blocks.1.attn.proj     |      0.148M            |      37.896M |
+|     net_t.blocks.1.norm2          |     0.768K             |     0.493M   |
+|      net_t.blocks.1.norm2.weight  |      (384,)            |              |
+|      net_t.blocks.1.norm2.bias    |      (384,)            |              |
+|     net_t.blocks.1.mlp            |     1.182M             |     0.303G   |
+|      net_t.blocks.1.mlp.fc1       |      0.591M            |      0.152G  |
+|      net_t.blocks.1.mlp.fc2       |      0.59M             |      0.152G  |
+|    net_t.blocks.2                 |    1.774M              |    0.456G    |
+|     net_t.blocks.2.norm1          |     0.768K             |     0.493M   |
+|      net_t.blocks.2.norm1.weight  |      (384,)            |              |
+|      net_t.blocks.2.norm1.bias    |      (384,)            |              |
+|     net_t.blocks.2.attn           |     0.591M             |     0.152G   |
+|      net_t.blocks.2.attn.qkv      |      0.444M            |      0.114G  |
+|      net_t.blocks.2.attn.proj     |      0.148M            |      37.896M |
+|     net_t.blocks.2.norm2          |     0.768K             |     0.493M   |
+|      net_t.blocks.2.norm2.weight  |      (384,)            |              |
+|      net_t.blocks.2.norm2.bias    |      (384,)            |              |
+|     net_t.blocks.2.mlp            |     1.182M             |     0.303G   |
+|      net_t.blocks.2.mlp.fc1       |      0.591M            |      0.152G  |
+|      net_t.blocks.2.mlp.fc2       |      0.59M             |      0.152G  |
+|    net_t.blocks.3                 |    1.774M              |    0.456G    |
+|     net_t.blocks.3.norm1          |     0.768K             |     0.493M   |
+|      net_t.blocks.3.norm1.weight  |      (384,)            |              |
+|      net_t.blocks.3.norm1.bias    |      (384,)            |              |
+|     net_t.blocks.3.attn           |     0.591M             |     0.152G   |
+|      net_t.blocks.3.attn.qkv      |      0.444M            |      0.114G  |
+|      net_t.blocks.3.attn.proj     |      0.148M            |      37.896M |
+|     net_t.blocks.3.norm2          |     0.768K             |     0.493M   |
+|      net_t.blocks.3.norm2.weight  |      (384,)            |              |
+|      net_t.blocks.3.norm2.bias    |      (384,)            |              |
+|     net_t.blocks.3.mlp            |     1.182M             |     0.303G   |
+|      net_t.blocks.3.mlp.fc1       |      0.591M            |      0.152G  |
+|      net_t.blocks.3.mlp.fc2       |      0.59M             |      0.152G  |
+|    net_t.blocks.4                 |    1.774M              |    0.456G    |
+|     net_t.blocks.4.norm1          |     0.768K             |     0.493M   |
+|      net_t.blocks.4.norm1.weight  |      (384,)            |              |
+|      net_t.blocks.4.norm1.bias    |      (384,)            |              |
+|     net_t.blocks.4.attn           |     0.591M             |     0.152G   |
+|      net_t.blocks.4.attn.qkv      |      0.444M            |      0.114G  |
+|      net_t.blocks.4.attn.proj     |      0.148M            |      37.896M |
+|     net_t.blocks.4.norm2          |     0.768K             |     0.493M   |
+|      net_t.blocks.4.norm2.weight  |      (384,)            |              |
+|      net_t.blocks.4.norm2.bias    |      (384,)            |              |
+|     net_t.blocks.4.mlp            |     1.182M             |     0.303G   |
+|      net_t.blocks.4.mlp.fc1       |      0.591M            |      0.152G  |
+|      net_t.blocks.4.mlp.fc2       |      0.59M             |      0.152G  |
+|    net_t.blocks.5                 |    1.774M              |    0.456G    |
+|     net_t.blocks.5.norm1          |     0.768K             |     0.493M   |
+|      net_t.blocks.5.norm1.weight  |      (384,)            |              |
+|      net_t.blocks.5.norm1.bias    |      (384,)            |              |
+|     net_t.blocks.5.attn           |     0.591M             |     0.152G   |
+|      net_t.blocks.5.attn.qkv      |      0.444M            |      0.114G  |
+|      net_t.blocks.5.attn.proj     |      0.148M            |      37.896M |
+|     net_t.blocks.5.norm2          |     0.768K             |     0.493M   |
+|      net_t.blocks.5.norm2.weight  |      (384,)            |              |
+|      net_t.blocks.5.norm2.bias    |      (384,)            |              |
+|     net_t.blocks.5.mlp            |     1.182M             |     0.303G   |
+|      net_t.blocks.5.mlp.fc1       |      0.591M            |      0.152G  |
+|      net_t.blocks.5.mlp.fc2       |      0.59M             |      0.152G  |
+|    net_t.blocks.6                 |    1.774M              |    0.456G    |
+|     net_t.blocks.6.norm1          |     0.768K             |     0.493M   |
+|      net_t.blocks.6.norm1.weight  |      (384,)            |              |
+|      net_t.blocks.6.norm1.bias    |      (384,)            |              |
+|     net_t.blocks.6.attn           |     0.591M             |     0.152G   |
+|      net_t.blocks.6.attn.qkv      |      0.444M            |      0.114G  |
+|      net_t.blocks.6.attn.proj     |      0.148M            |      37.896M |
+|     net_t.blocks.6.norm2          |     0.768K             |     0.493M   |
+|      net_t.blocks.6.norm2.weight  |      (384,)            |              |
+|      net_t.blocks.6.norm2.bias    |      (384,)            |              |
+|     net_t.blocks.6.mlp            |     1.182M             |     0.303G   |
+|      net_t.blocks.6.mlp.fc1       |      0.591M            |      0.152G  |
+|      net_t.blocks.6.mlp.fc2       |      0.59M             |      0.152G  |
+|    net_t.blocks.7                 |    1.774M              |    0.456G    |
+|     net_t.blocks.7.norm1          |     0.768K             |     0.493M   |
+|      net_t.blocks.7.norm1.weight  |      (384,)            |              |
+|      net_t.blocks.7.norm1.bias    |      (384,)            |              |
+|     net_t.blocks.7.attn           |     0.591M             |     0.152G   |
+|      net_t.blocks.7.attn.qkv      |      0.444M            |      0.114G  |
+|      net_t.blocks.7.attn.proj     |      0.148M            |      37.896M |
+|     net_t.blocks.7.norm2          |     0.768K             |     0.493M   |
+|      net_t.blocks.7.norm2.weight  |      (384,)            |              |
+|      net_t.blocks.7.norm2.bias    |      (384,)            |              |
+|     net_t.blocks.7.mlp            |     1.182M             |     0.303G   |
+|      net_t.blocks.7.mlp.fc1       |      0.591M            |      0.152G  |
+|      net_t.blocks.7.mlp.fc2       |      0.59M             |      0.152G  |
+|    net_t.blocks.8                 |    1.774M              |    0.456G    |
+|     net_t.blocks.8.norm1          |     0.768K             |     0.493M   |
+|      net_t.blocks.8.norm1.weight  |      (384,)            |              |
+|      net_t.blocks.8.norm1.bias    |      (384,)            |              |
+|     net_t.blocks.8.attn           |     0.591M             |     0.152G   |
+|      net_t.blocks.8.attn.qkv      |      0.444M            |      0.114G  |
+|      net_t.blocks.8.attn.proj     |      0.148M            |      37.896M |
+|     net_t.blocks.8.norm2          |     0.768K             |     0.493M   |
+|      net_t.blocks.8.norm2.weight  |      (384,)            |              |
+|      net_t.blocks.8.norm2.bias    |      (384,)            |              |
+|     net_t.blocks.8.mlp            |     1.182M             |     0.303G   |
+|      net_t.blocks.8.mlp.fc1       |      0.591M            |      0.152G  |
+|      net_t.blocks.8.mlp.fc2       |      0.59M             |      0.152G  |
+|    net_t.blocks.9                 |    1.774M              |    0.456G    |
+|     net_t.blocks.9.norm1          |     0.768K             |     0.493M   |
+|      net_t.blocks.9.norm1.weight  |      (384,)            |              |
+|      net_t.blocks.9.norm1.bias    |      (384,)            |              |
+|     net_t.blocks.9.attn           |     0.591M             |     0.152G   |
+|      net_t.blocks.9.attn.qkv      |      0.444M            |      0.114G  |
+|      net_t.blocks.9.attn.proj     |      0.148M            |      37.896M |
+|     net_t.blocks.9.norm2          |     0.768K             |     0.493M   |
+|      net_t.blocks.9.norm2.weight  |      (384,)            |              |
+|      net_t.blocks.9.norm2.bias    |      (384,)            |              |
+|     net_t.blocks.9.mlp            |     1.182M             |     0.303G   |
+|      net_t.blocks.9.mlp.fc1       |      0.591M            |      0.152G  |
+|      net_t.blocks.9.mlp.fc2       |      0.59M             |      0.152G  |
+|    net_t.blocks.10                |    1.774M              |    0.456G    |
+|     net_t.blocks.10.norm1         |     0.768K             |     0.493M   |
+|      net_t.blocks.10.norm1.weight |      (384,)            |              |
+|      net_t.blocks.10.norm1.bias   |      (384,)            |              |
+|     net_t.blocks.10.attn          |     0.591M             |     0.152G   |
+|      net_t.blocks.10.attn.qkv     |      0.444M            |      0.114G  |
+|      net_t.blocks.10.attn.proj    |      0.148M            |      37.896M |
+|     net_t.blocks.10.norm2         |     0.768K             |     0.493M   |
+|      net_t.blocks.10.norm2.weight |      (384,)            |              |
+|      net_t.blocks.10.norm2.bias   |      (384,)            |              |
+|     net_t.blocks.10.mlp           |     1.182M             |     0.303G   |
+|      net_t.blocks.10.mlp.fc1      |      0.591M            |      0.152G  |
+|      net_t.blocks.10.mlp.fc2      |      0.59M             |      0.152G  |
+|    net_t.blocks.11                |    1.774M              |    0.456G    |
+|     net_t.blocks.11.norm1         |     0.768K             |     0.493M   |
+|      net_t.blocks.11.norm1.weight |      (384,)            |              |
+|      net_t.blocks.11.norm1.bias   |      (384,)            |              |
+|     net_t.blocks.11.attn          |     0.591M             |     0.152G   |
+|      net_t.blocks.11.attn.qkv     |      0.444M            |      0.114G  |
+|      net_t.blocks.11.attn.proj    |      0.148M            |      37.896M |
+|     net_t.blocks.11.norm2         |     0.768K             |     0.493M   |
+|      net_t.blocks.11.norm2.weight |      (384,)            |              |
+|      net_t.blocks.11.norm2.bias   |      (384,)            |              |
+|     net_t.blocks.11.mlp           |     1.182M             |     0.303G   |
+|      net_t.blocks.11.mlp.fc1      |      0.591M            |      0.152G  |
+|      net_t.blocks.11.mlp.fc2      |      0.59M             |      0.152G  |
+|   net_t.norm                      |   0.768K               |              |
+|    net_t.norm.weight              |    (384,)              |              |
+|    net_t.norm.bias                |    (384,)              |              |
+|  net_fusion.fc                    |  0.148M                |  37.749M     |
+|   net_fusion.fc.weight            |   (384, 384)           |              |
+|   net_fusion.fc.bias              |   (384,)               |              |
+|  net_s                            |  16.75M                |  4.086G      |
+|   net_s.cls_token                 |   (1, 1, 384)          |              |
+|   net_s.pos_embed                 |   (1, 256, 384)        |              |
+|   net_s.patch_embed.proj          |   0.295M               |              |
+|    net_s.patch_embed.proj.weight  |    (384, 3, 16, 16)    |              |
+|    net_s.patch_embed.proj.bias    |    (384,)              |              |
+|   net_s.blocks                    |   15.97M               |   4.086G     |
+|    net_s.blocks.0                 |    1.774M              |    0.454G    |
+|     net_s.blocks.0.norm1          |     0.768K             |     0.492M   |
+|      net_s.blocks.0.norm1.weight  |      (384,)            |              |
+|      net_s.blocks.0.norm1.bias    |      (384,)            |              |
+|     net_s.blocks.0.attn           |     0.591M             |     0.151G   |
+|      net_s.blocks.0.attn.qkv      |      0.444M            |      0.113G  |
+|      net_s.blocks.0.attn.proj     |      0.148M            |      37.749M |
+|     net_s.blocks.0.norm2          |     0.768K             |     0.492M   |
+|      net_s.blocks.0.norm2.weight  |      (384,)            |              |
+|      net_s.blocks.0.norm2.bias    |      (384,)            |              |
+|     net_s.blocks.0.mlp            |     1.182M             |     0.302G   |
+|      net_s.blocks.0.mlp.fc1       |      0.591M            |      0.151G  |
+|      net_s.blocks.0.mlp.fc2       |      0.59M             |      0.151G  |
+|    net_s.blocks.1                 |    1.774M              |    0.454G    |
+|     net_s.blocks.1.norm1          |     0.768K             |     0.492M   |
+|      net_s.blocks.1.norm1.weight  |      (384,)            |              |
+|      net_s.blocks.1.norm1.bias    |      (384,)            |              |
+|     net_s.blocks.1.attn           |     0.591M             |     0.151G   |
+|      net_s.blocks.1.attn.qkv      |      0.444M            |      0.113G  |
+|      net_s.blocks.1.attn.proj     |      0.148M            |      37.749M |
+|     net_s.blocks.1.norm2          |     0.768K             |     0.492M   |
+|      net_s.blocks.1.norm2.weight  |      (384,)            |              |
+|      net_s.blocks.1.norm2.bias    |      (384,)            |              |
+|     net_s.blocks.1.mlp            |     1.182M             |     0.302G   |
+|      net_s.blocks.1.mlp.fc1       |      0.591M            |      0.151G  |
+|      net_s.blocks.1.mlp.fc2       |      0.59M             |      0.151G  |
+|    net_s.blocks.2                 |    1.774M              |    0.454G    |
+|     net_s.blocks.2.norm1          |     0.768K             |     0.492M   |
+|      net_s.blocks.2.norm1.weight  |      (384,)            |              |
+|      net_s.blocks.2.norm1.bias    |      (384,)            |              |
+|     net_s.blocks.2.attn           |     0.591M             |     0.151G   |
+|      net_s.blocks.2.attn.qkv      |      0.444M            |      0.113G  |
+|      net_s.blocks.2.attn.proj     |      0.148M            |      37.749M |
+|     net_s.blocks.2.norm2          |     0.768K             |     0.492M   |
+|      net_s.blocks.2.norm2.weight  |      (384,)            |              |
+|      net_s.blocks.2.norm2.bias    |      (384,)            |              |
+|     net_s.blocks.2.mlp            |     1.182M             |     0.302G   |
+|      net_s.blocks.2.mlp.fc1       |      0.591M            |      0.151G  |
+|      net_s.blocks.2.mlp.fc2       |      0.59M             |      0.151G  |
+|    net_s.blocks.3                 |    1.774M              |    0.454G    |
+|     net_s.blocks.3.norm1          |     0.768K             |     0.492M   |
+|      net_s.blocks.3.norm1.weight  |      (384,)            |              |
+|      net_s.blocks.3.norm1.bias    |      (384,)            |              |
+|     net_s.blocks.3.attn           |     0.591M             |     0.151G   |
+|      net_s.blocks.3.attn.qkv      |      0.444M            |      0.113G  |
+|      net_s.blocks.3.attn.proj     |      0.148M            |      37.749M |
+|     net_s.blocks.3.norm2          |     0.768K             |     0.492M   |
+|      net_s.blocks.3.norm2.weight  |      (384,)            |              |
+|      net_s.blocks.3.norm2.bias    |      (384,)            |              |
+|     net_s.blocks.3.mlp            |     1.182M             |     0.302G   |
+|      net_s.blocks.3.mlp.fc1       |      0.591M            |      0.151G  |
+|      net_s.blocks.3.mlp.fc2       |      0.59M             |      0.151G  |
+|    net_s.blocks.4                 |    1.774M              |    0.454G    |
+|     net_s.blocks.4.norm1          |     0.768K             |     0.492M   |
+|      net_s.blocks.4.norm1.weight  |      (384,)            |              |
+|      net_s.blocks.4.norm1.bias    |      (384,)            |              |
+|     net_s.blocks.4.attn           |     0.591M             |     0.151G   |
+|      net_s.blocks.4.attn.qkv      |      0.444M            |      0.113G  |
+|      net_s.blocks.4.attn.proj     |      0.148M            |      37.749M |
+|     net_s.blocks.4.norm2          |     0.768K             |     0.492M   |
+|      net_s.blocks.4.norm2.weight  |      (384,)            |              |
+|      net_s.blocks.4.norm2.bias    |      (384,)            |              |
+|     net_s.blocks.4.mlp            |     1.182M             |     0.302G   |
+|      net_s.blocks.4.mlp.fc1       |      0.591M            |      0.151G  |
+|      net_s.blocks.4.mlp.fc2       |      0.59M             |      0.151G  |
+|    net_s.blocks.5                 |    1.774M              |    0.454G    |
+|     net_s.blocks.5.norm1          |     0.768K             |     0.492M   |
+|      net_s.blocks.5.norm1.weight  |      (384,)            |              |
+|      net_s.blocks.5.norm1.bias    |      (384,)            |              |
+|     net_s.blocks.5.attn           |     0.591M             |     0.151G   |
+|      net_s.blocks.5.attn.qkv      |      0.444M            |      0.113G  |
+|      net_s.blocks.5.attn.proj     |      0.148M            |      37.749M |
+|     net_s.blocks.5.norm2          |     0.768K             |     0.492M   |
+|      net_s.blocks.5.norm2.weight  |      (384,)            |              |
+|      net_s.blocks.5.norm2.bias    |      (384,)            |              |
+|     net_s.blocks.5.mlp            |     1.182M             |     0.302G   |
+|      net_s.blocks.5.mlp.fc1       |      0.591M            |      0.151G  |
+|      net_s.blocks.5.mlp.fc2       |      0.59M             |      0.151G  |
+|    net_s.blocks.6                 |    1.774M              |    0.454G    |
+|     net_s.blocks.6.norm1          |     0.768K             |     0.492M   |
+|      net_s.blocks.6.norm1.weight  |      (384,)            |              |
+|      net_s.blocks.6.norm1.bias    |      (384,)            |              |
+|     net_s.blocks.6.attn           |     0.591M             |     0.151G   |
+|      net_s.blocks.6.attn.qkv      |      0.444M            |      0.113G  |
+|      net_s.blocks.6.attn.proj     |      0.148M            |      37.749M |
+|     net_s.blocks.6.norm2          |     0.768K             |     0.492M   |
+|      net_s.blocks.6.norm2.weight  |      (384,)            |              |
+|      net_s.blocks.6.norm2.bias    |      (384,)            |              |
+|     net_s.blocks.6.mlp            |     1.182M             |     0.302G   |
+|      net_s.blocks.6.mlp.fc1       |      0.591M            |      0.151G  |
+|      net_s.blocks.6.mlp.fc2       |      0.59M             |      0.151G  |
+|    net_s.blocks.7                 |    1.774M              |    0.454G    |
+|     net_s.blocks.7.norm1          |     0.768K             |     0.492M   |
+|      net_s.blocks.7.norm1.weight  |      (384,)            |              |
+|      net_s.blocks.7.norm1.bias    |      (384,)            |              |
+|     net_s.blocks.7.attn           |     0.591M             |     0.151G   |
+|      net_s.blocks.7.attn.qkv      |      0.444M            |      0.113G  |
+|      net_s.blocks.7.attn.proj     |      0.148M            |      37.749M |
+|     net_s.blocks.7.norm2          |     0.768K             |     0.492M   |
+|      net_s.blocks.7.norm2.weight  |      (384,)            |              |
+|      net_s.blocks.7.norm2.bias    |      (384,)            |              |
+|     net_s.blocks.7.mlp            |     1.182M             |     0.302G   |
+|      net_s.blocks.7.mlp.fc1       |      0.591M            |      0.151G  |
+|      net_s.blocks.7.mlp.fc2       |      0.59M             |      0.151G  |
+|    net_s.blocks.8                 |    1.774M              |    0.454G    |
+|     net_s.blocks.8.norm1          |     0.768K             |     0.492M   |
+|      net_s.blocks.8.norm1.weight  |      (384,)            |              |
+|      net_s.blocks.8.norm1.bias    |      (384,)            |              |
+|     net_s.blocks.8.attn           |     0.591M             |     0.151G   |
+|      net_s.blocks.8.attn.qkv      |      0.444M            |      0.113G  |
+|      net_s.blocks.8.attn.proj     |      0.148M            |      37.749M |
+|     net_s.blocks.8.norm2          |     0.768K             |     0.492M   |
+|      net_s.blocks.8.norm2.weight  |      (384,)            |              |
+|      net_s.blocks.8.norm2.bias    |      (384,)            |              |
+|     net_s.blocks.8.mlp            |     1.182M             |     0.302G   |
+|      net_s.blocks.8.mlp.fc1       |      0.591M            |      0.151G  |
+|      net_s.blocks.8.mlp.fc2       |      0.59M             |      0.151G  |
+|   net_s.norm                      |   0.768K               |              |
+|    net_s.norm.weight              |    (384,)              |              |
+|    net_s.norm.bias                |    (384,)              |              |
+|   net_s.head                      |   0.385M               |              |
+|    net_s.head.weight              |    (1000, 384)         |              |
+|    net_s.head.bias                |    (1000,)             |              |
+-------------------------------------------------------------------------------
+2025-12-09 18:00:43,441 - ==> Creating optimizer
+2025-12-09 18:00:43,444 - ==> Loading dataset: DefaultAD

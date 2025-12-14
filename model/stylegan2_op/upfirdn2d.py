@@ -5,17 +5,20 @@ import os
 
 import torch
 from torch.autograd import Function
-from torch.utils.cpp_extension import load
+from torch.nn import functional as F
 
-
-module_path = os.path.dirname(__file__)
-upfirdn2d_op = load(
-    "upfirdn2d",
-    sources=[
-        os.path.join(module_path, "upfirdn2d.cpp"),
-        os.path.join(module_path, "upfirdn2d_kernel.cu"),
-    ],
-)
+try:
+    from torch.utils.cpp_extension import load
+    module_path = os.path.dirname(__file__)
+    upfirdn2d_op = load(
+        "upfirdn2d",
+        sources=[
+            os.path.join(module_path, "upfirdn2d.cpp"),
+            os.path.join(module_path, "upfirdn2d_kernel.cu"),
+        ],
+    )
+except Exception:
+    upfirdn2d_op = None
 
 
 class UpFirDn2dBackward(Function):
@@ -145,11 +148,27 @@ class UpFirDn2d(Function):
 
 
 def upfirdn2d(input, kernel, up=1, down=1, pad=(0, 0)):
-    out = UpFirDn2d.apply(
-        input, kernel, (up, up), (down, down), (pad[0], pad[1], pad[0], pad[1])
-    )
+    if upfirdn2d_op is None:
+        up_x, up_y = up, up
+        down_x, down_y = down, down
+        pad_x0, pad_x1, pad_y0, pad_y1 = pad[0], pad[1], pad[0], pad[1]
+        
+        batch, channel, in_h, in_w = input.shape
+        input = input.reshape(-1, in_h, in_w, 1)
+        
+        out = upfirdn2d_native(
+            input, kernel, up_x, up_y, down_x, down_y, pad_x0, pad_x1, pad_y0, pad_y1
+        )
+        
+        out_h, out_w = out.shape[1], out.shape[2]
+        out = out.view(batch, channel, out_h, out_w)
+        return out
+    else:
+        out = UpFirDn2d.apply(
+            input, kernel, (up, up), (down, down), (pad[0], pad[1], pad[0], pad[1])
+        )
 
-    return out
+        return out
 
 
 def upfirdn2d_native(

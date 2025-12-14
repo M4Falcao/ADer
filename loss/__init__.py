@@ -1,12 +1,13 @@
 import glob
 import importlib
+import os
 
 from util.registry import Registry
 LOSS = Registry('Loss')
 
 files = glob.glob('loss/[!_]*.py')
 for file in files:
-	model_lib = importlib.import_module(file.split('.')[0].replace('/', '.'))
+	model_lib = importlib.import_module(file.split('.')[0].replace(os.sep, '.'))
 
 
 def get_loss_terms(loss_terms, device='cpu'):
